@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.talkweb.demo.dao.UCardMapper">
+  <resultMap id="BaseResultMap" type="com.talkweb.demo.pojo.UCardBean">
+  	<id column="card_id" property="card_id" jdbcType="VARCHAR" />
+  	<result column="card_id" property="card_id" jdbcType="VARCHAR" />
+  	<result column="card_name" property="card_name" jdbcType="VARCHAR" />
+  	<result column="card_no" property="card_no" jdbcType="VARCHAR" />
+  	<result column="card_type" property="card_type" jdbcType="VARCHAR" />
+  	<result column="end_time" property="end_time" jdbcType="TIMESTAMP" />
+  	<result column="end_price" property="end_price" jdbcType="DOUBLE" />
+  	<result column="pay_price" property="pay_price" jdbcType="DOUBLE" />
+  	<result column="buyer_id" property="buyer_id" jdbcType="VARCHAR" />
+  	<result column="pay_time" property="pay_time" jdbcType="TIMESTAMP" />
+  	<result column="send_time" property="send_time" jdbcType="TIMESTAMP" />
+  	<result column="waybill_number" property="waybill_number" jdbcType="VARCHAR" />
+  	<result column="settlement_ratio" property="settlement_ratio" jdbcType="DOUBLE" />
+  	<result column="status" property="status" jdbcType="VARCHAR" />
+  	<result column="comments" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+  	x.card_id, x.card_name, x.card_no, x.card_type, x.end_time, x.end_price,
+x.pay_price, x.buyer_id, x.pay_time, x.send_time, x.waybill_number, x.settlement_ratio,
+x.status, x.comments
+  </sql>
+  
+  <insert id="insertSelective" parameterType="com.talkweb.demo.pojo.UCardBean">
+    insert into xb_card
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="card_id != null" > card_id, </if>
+      <if test="card_name != null" > card_name, </if>
+      <if test="card_no != null" > card_no, </if>
+      <if test="card_type != null" > card_type, </if>
+      <if test="end_time != null" > end_time, </if>
+      <if test="end_price != null" > end_price, </if>
+      <if test="pay_price != null" > pay_price, </if>
+      <if test="buyer_id != null" > buyer_id, </if>
+      <if test="pay_time != null" > pay_time, </if>
+      <if test="send_time != null" > send_time, </if>
+      <if test="waybill_number != null" > waybill_number, </if>
+      <if test="settlement_ratio != null" > settlement_ratio, </if>
+      <if test="status != null" > status, </if>
+      <if test="comments != null" > comments, </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="card_id != null" > #{card_id,jdbcType=VARCHAR}, </if>
+      <if test="card_name != null" > #{card_name,jdbcType=VARCHAR}, </if>
+      <if test="card_no != null" > #{card_no,jdbcType=VARCHAR}, </if>
+      <if test="card_type != null" > #{card_type,jdbcType=VARCHAR}, </if>
+      <if test="end_time != null" > #{end_time,jdbcType=TIMESTAMP}, </if>
+      <if test="end_price != null" > #{end_price,jdbcType=DOUBLE}, </if>
+      <if test="pay_price != null" > #{pay_price,jdbcType=DOUBLE}, </if>
+      <if test="buyer_id != null" > #{buyer_id,jdbcType=VARCHAR}, </if>
+      <if test="pay_time != null" > #{pay_time,jdbcType=TIMESTAMP}, </if>
+      <if test="send_time != null" > #{send_time,jdbcType=TIMESTAMP}, </if>
+      <if test="waybill_number != null" > #{waybill_number,jdbcType=VARCHAR}, </if>
+      <if test="settlement_ratio != null" > #{settlement_ratio,jdbcType=DOUBLE}, </if>
+      <if test="status != null" > #{status,jdbcType=VARCHAR}, </if>
+      <if test="comments != null" > #{comments,jdbcType=VARCHAR}, </if>
+    </trim>
+  </insert>
+  
+  <update id="updateSelective" parameterType="com.talkweb.demo.pojo.UCardBean">
+    update xb_card 
+    <set>
+      <if test="card_id != null" > card_id = #{card_id,jdbcType=VARCHAR}, </if>
+      <if test="card_name != null" > card_name = #{card_name,jdbcType=VARCHAR}, </if>
+      <if test="card_no != null" > card_no = #{card_no,jdbcType=VARCHAR}, </if>
+      <if test="card_type != null" > card_type = #{card_type,jdbcType=VARCHAR}, </if>
+      <if test="end_time != null" > end_time = #{end_time,jdbcType=TIMESTAMP}, </if>
+      <if test="end_price != null" > end_price = #{end_price,jdbcType=DOUBLE}, </if>
+      <if test="pay_price != null" > pay_price = #{pay_price,jdbcType=DOUBLE}, </if>
+      <if test="buyer_id != null" > buyer_id = #{buyer_id,jdbcType=VARCHAR}, </if>
+      <if test="pay_time != null" > pay_time = #{pay_time,jdbcType=TIMESTAMP}, </if>
+      <if test="send_time != null" > send_time = #{send_time,jdbcType=TIMESTAMP}, </if>
+      <if test="waybill_number != null" > waybill_number = #{waybill_number,jdbcType=VARCHAR}, </if>
+      <if test="settlement_ratio != null" > settlement_ratio = #{settlement_ratio,jdbcType=DOUBLE}, </if>
+      <if test="status != null" > status = #{status,jdbcType=VARCHAR}, </if>
+      <if test="comments != null" > comments = #{comments,jdbcType=VARCHAR}, </if>
+    </set>
+    where card_id = #{card_id,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 如果有数据状态字段，删除方法请更改为update语句，做逻辑删除 -->
+  <delete id="updateSelective1" parameterType="java.lang.String" >
+    update xb_card
+    <set>
+       status = '结算中'
+    </set>
+    where card_id in
+    <foreach collection="array" open="(" separator="," close=")" item="item">
+     #{item}
+    </foreach>
+  </delete>
+  
+  <!-- 查询条件 模糊查询用concat函数 ：name like concat('%',#{bean.name,jdbcType=VARCHAR},'%') -->
+  <select id="pageList" resultMap="BaseResultMap" parameterType="com.talkweb.pangu.base.common.pojo.PageBean">
+    select 
+    <include refid="Base_Column_List" />
+    from xb_card x
+    <where>
+      <if test="bean.card_no != null and bean.card_no != '' "> and x.card_no like concat(#{bean.card_no,jdbcType=VARCHAR},'%') </if>
+      <if test="bean.card_name != null and bean.card_name != '' "> and x.card_name like concat('%',#{bean.card_name,jdbcType=VARCHAR},'%') </if>
+      <if test="bean.status != null and bean.status != '' "> and x.status = #{bean.status,jdbcType=VARCHAR} </if>
+    </where>
+  </select>
+  
+  <select id="list" resultMap="BaseResultMap" parameterType="com.talkweb.demo.pojo.UCardBean" >
+    select 
+    <include refid="Base_Column_List" />
+    from xb_card x
+  </select>
+  
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from xb_card x
+    where x.card_id = #{card_id,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

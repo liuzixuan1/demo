@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.talkweb.demo.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.talkweb.demo.pojo.UserBean">
+        <id column="user_id" property="user_id" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="real_name" property="real_name" jdbcType="CHAR" />
+        <result column="cellphone" property="cellphone" jdbcType="VARCHAR" />
+        <result column="pay_account" property="pay_account" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="update_time" jdbcType="TIMESTAMP" />
+
+    </resultMap>
+    <sql id="Base_Column_List" >
+  	c.user_id, c.username, c.password, c.real_name, c.cellphone,
+  	 c.pay_account
+  </sql>
+
+    <insert id="insertSelective" parameterType="com.talkweb.demo.pojo.UserBean">
+        insert into xb_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="user_id != null" > user_id, </if>
+            <if test="username != null" > username, </if>
+            <if test="password != null" > password, </if>
+            <if test="real_name != null" > real_name, </if>
+            <if test="cellphone != null" > cellphone, </if>
+            <if test="pay_account != null" > pay_account, </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="user_id != null" > #{user_id,jdbcType=VARCHAR}, </if>
+            <if test="username != null" > #{username,jdbcType=VARCHAR}, </if>
+            <if test="password != null" > #{password,jdbcType=VARCHAR}, </if>
+            <if test="real_name != null" > #{real_name,jdbcType=CHAR}, </if>
+            <if test="cellphone != null" > #{cellphone,jdbcType=VARCHAR}, </if>
+            <if test="pay_account != null" > #{pay_account,jdbcType=TIMESTAMP}, </if>
+        </trim>
+    </insert>
+
+    <update id="updateSelective" parameterType="com.talkweb.demo.pojo.UserBean">
+        update xb_user
+        <set>
+            <if test="user_id != null" > user_id = #{user_id,jdbcType=VARCHAR}, </if>
+            <if test="username != null" > username = #{username,jdbcType=VARCHAR}, </if>
+            <if test="password != null" > password = #{password,jdbcType=VARCHAR}, </if>
+            <if test="real_name != null" > real_name = #{real_name,jdbcType=CHAR}, </if>
+            <if test="cellphone != null" > cellphone = #{cellphone,jdbcType=VARCHAR}, </if>
+            <if test="pay_account != null" > pay_account = #{pay_account,jdbcType=TIMESTAMP}, </if>
+        </set>
+        where user_id = #{user_id,jdbcType=VARCHAR}
+    </update>
+
+
+
+    <!-- 查询条件 模糊查询用concat函数 ：name like concat('%',#{bean.name,jdbcType=VARCHAR},'%') -->
+    <select id="pageList" resultMap="BaseResultMap" parameterType="com.talkweb.pangu.base.common.pojo.PageBean">
+        select
+        <include refid="Base_Column_List" />
+        from xb_user c
+        <where>
+            <if test="bean.user_id != null and bean.user_id != '' "> and c.user_id = #{bean.user_id,jdbcType=VARCHAR}</if>
+            <if test="bean.username != null and bean.username != '' "> and c.username like concat('%',#{bean.username,jdbcType=VARCHAR},'%')</if>
+            <if test="bean.real_name != null and bean.real_name != '' "> and c.real_name like concat('%',#{bean.real_name,jdbcType=VARCHAR},'%') </if>
+        </where>
+    </select>
+
+    <!-- 如果有数据状态字段，删除方法请更改为update语句，做逻辑删除 -->
+    <delete id="delete" parameterType="java.lang.String" >
+        delete from xb_user
+        where user_id in
+        <foreach collection="array" open="(" separator="," close=")" item="item">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!-- 查询所有公司信息 -->
+    <select id="listAll" resultMap="BaseResultMap" parameterType="com.talkweb.demo.pojo.UserBean" >
+        select
+        <include refid="Base_Column_List" />
+        from xb_user c
+    </select>
+
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from xb_user c
+        where c.user_id = #{user_id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getLogin" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from xb_user c
+        where c.username = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 查询用户名是否存在 -->
+    <select id="countUser" resultType="INTEGER" parameterType="java.lang.String">
+        select count(user_id) from xb_user where username = #{username,jdbcType=VARCHAR}
+    </select>
+</mapper>
