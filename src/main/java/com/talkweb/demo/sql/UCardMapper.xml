@@ -101,7 +101,7 @@ x.status, x.comments
     <where>
       <if test="bean.card_no != null and bean.card_no != '' "> and x.card_no like concat(#{bean.card_no,jdbcType=VARCHAR},'%') </if>
       <if test="bean.card_name != null and bean.card_name != '' "> and x.card_name like concat('%',#{bean.card_name,jdbcType=VARCHAR},'%') </if>
-      <if test="bean.status != null and bean.status != '' "> and x.status = #{bean.status,jdbcType=VARCHAR} </if>
+      <if test="bean.status != null and bean.status != '' "> and x.status like concat('%',#{bean.status,jdbcType=VARCHAR},'%')  </if>
     </where>
   </select>
   

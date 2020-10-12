@@ -154,7 +154,7 @@ public class UserServiceImpl implements UserService {
         return result;
     }
     @Override
-    public ResultMap<AResultCode,UserBean> getLogin(String username,String password) {
+    public ResultMap<AResultCode,UserBean> getLogin(String username,String password, int status) {
         ResultMap<AResultCode, UserBean> result = new ResultMap<AResultCode, UserBean>();
         UserBean bean = userMapper.getLogin(username);
         if (bean == null){
@@ -162,7 +162,11 @@ public class UserServiceImpl implements UserService {
         }else if(userMapper.countUser(username)==0){
             result.setCode(AResultCode.IS_NULL);
         }else {
-            if (password.equals(bean.getPassword())) {
+            Boolean A = !(bean.getUser_id().startsWith("ZZ")) && (status ==0);
+            Boolean B = bean.getUser_id().startsWith("ZZ") && (status ==1);
+            if(A || B){
+                result.setCode(AResultCode.FAIL);
+            } else if (password.equals(bean.getPassword())) {
                 result.setCode(AResultCode.OK);
                 result.setResult(bean);
             }else {

@@ -60,5 +60,5 @@ public interface UserService {
      */
     public ResultMap<AResultCode, UserBean> get(String user_id);
 
-    public ResultMap<AResultCode, UserBean> getLogin(String username, String password);
+    public ResultMap<AResultCode, UserBean> getLogin(String username, String password,int status);
 }

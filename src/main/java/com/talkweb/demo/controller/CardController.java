@@ -37,8 +37,8 @@ public class CardController {
 	@ApiOperation(value="新增接口")
 	@CrossOrigin
 	@RequestMapping(name="新增接口",value="show.json",method = RequestMethod.GET)
-	public String show(){
-		return "cardService.insert(bean)";
+	public String show(@RequestParam("device_id") String device_id){
+		return device_id;
 	}
 
 	@ApiOperation(value="新增接口")

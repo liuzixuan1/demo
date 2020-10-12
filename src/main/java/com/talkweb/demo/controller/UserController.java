@@ -1,5 +1,6 @@
 package com.talkweb.demo.controller;
 
+import com.talkweb.demo.pojo.CardBean;
 import com.talkweb.demo.pojo.UserBean;
 import com.talkweb.demo.service.UserService;
 import com.talkweb.pangu.base.common.pojo.PageBean;
@@ -71,10 +72,20 @@ public class UserController {
     }
 
     @CrossOrigin
-    @ApiOperation(value="根据主键获取数据接口")
-    @RequestMapping(name="根据主键获取数据接口",value="login.json",method = RequestMethod.GET)
-    public ResultMap<AResultCode, UserBean> login(@RequestParam("username")  String username, @RequestParam("password") String password){
-        return userService.getLogin(username,password);
+    @ApiOperation(value="管理员登录")
+    @RequestMapping(name="管理员登录",value="loginA.json",method = RequestMethod.GET)
+    public ResultMap<AResultCode, UserBean> loginA(@RequestParam("username")  String username, @RequestParam("password") String password){
+        int status = 0;
+        return userService.getLogin(username, password,status);
+
+    }
+
+    @CrossOrigin
+    @ApiOperation(value="用户登录")
+    @RequestMapping(name="用户登录",value="loginU.json",method = RequestMethod.GET)
+    public ResultMap<AResultCode, UserBean> loginU(@RequestParam("username")  String username, @RequestParam("password") String password){
+        int status = 1;
+        return userService.getLogin(username, password,status);
     }
 
 
