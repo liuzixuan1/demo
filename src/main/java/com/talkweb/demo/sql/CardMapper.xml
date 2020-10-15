@@ -114,4 +114,16 @@ x.status, x.comments
         where x.card_id = #{card_id,jdbcType=VARCHAR}
     </select>
 
+
+    <!-- 如果有数据状态字段，删除方法请更改为update语句，做逻辑删除 -->
+    <delete id="commit" parameterType="java.lang.String" >
+        update xb_card
+        <set>
+            status = '已结算'
+        </set>
+        where card_id in
+        <foreach collection="array" open="(" separator="," close=")" item="item">
+            #{item}
+        </foreach>
+    </delete>
 </mapper>

@@ -142,12 +142,32 @@ public class CardServiceImpl implements CardService{
     }
 
     /**
+     * 修改多个卡片状态为  “已结算”
+     * @param card_id
+     * @return
+     */
+    @Override
+    public ResultMap<AResultCode, CardBean> commit(String card_id) {
+        ResultMap<AResultCode, CardBean> result = new ResultMap<AResultCode, CardBean>();
+
+        if(StringUtil.isNull(card_id)){
+            result.setCode(AResultCode.MISS_ID);
+        } else {
+            String[] ids = card_id.split(",");
+            cardMapper.commit(ids);
+            result.setCode(AResultCode.OK);
+        }
+
+        return result;
+    }
+
+    /**
      * 根据卡片类型，定时更改卡片状态为待结算
      * @param bean
      */
     public void task(CardBean bean) {
         bean.setStatus("待结算");
-        if ("评级".equals(bean.getCard_type())) {
+        if ("评级卡".equals(bean.getCard_type())) {
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {

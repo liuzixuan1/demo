@@ -1,24 +1,23 @@
-2020-10-09 08:46:27.995  INFO 5584 --- [main] com.talkweb.demo.DemoApplication         : Starting DemoApplication on LAPTOP-UG8096AO with PID 5584 (D:\IdeaProjects\demo\target\classes started by l in D:\IdeaProjects\demo)
-2020-10-09 08:46:28.027  INFO 5584 --- [main] com.talkweb.demo.DemoApplication         : No active profile set, falling back to default profiles: default
-2020-10-09 08:46:29.526  WARN 5584 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.talkweb.demo.sql]' package. Please check your configuration.
-2020-10-09 08:46:30.970  INFO 5584 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
-2020-10-09 08:46:31.007  INFO 5584 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-10-09 08:46:31.008  INFO 5584 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-2020-10-09 08:46:31.315  INFO 5584 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-10-09 08:46:31.316  INFO 5584 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3029 ms
-2020-10-09 08:46:32.781  INFO 5584 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-09 08:46:33.144  INFO 5584 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
-2020-10-09 08:46:33.164  INFO 5584 --- [main] com.talkweb.demo.DemoApplication         : Started DemoApplication in 6.693 seconds (JVM running for 9.334)
-2020-10-09 08:47:06.079  INFO 5584 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-10-09 08:47:06.080  INFO 5584 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-10-09 08:47:06.089  INFO 5584 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
-2020-10-09 08:47:06.174  INFO 5584 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-10-09 08:47:06.178  WARN 5584 --- [http-nio-8081-exec-1] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-2020-10-09 08:47:07.099  INFO 5584 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-10-09 10:32:30.661  WARN 5584 --- [http-nio-8081-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
-2020-10-09 10:32:30.775  WARN 5584 --- [http-nio-8081-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
-2020-10-09 10:32:30.796  WARN 5584 --- [http-nio-8081-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
-2020-10-09 14:04:43.337  WARN 5584 --- [http-nio-8081-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
-2020-10-09 14:05:00.638  WARN 5584 --- [http-nio-8081-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
-2020-10-09 14:05:03.114  WARN 5584 --- [http-nio-8081-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
-2020-10-09 14:06:41.835  WARN 5584 --- [http-nio-8081-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.talkweb.pangu.base.common.result.ResultMap<com.talkweb.pangu.base.common.result.AResultCode, com.talkweb.pangu.base.common.pojo.PageBean<com.talkweb.demo.pojo.CardBean>> com.talkweb.demo.controller.CardController.pageList(com.talkweb.pangu.base.common.pojo.PageBean<com.talkweb.demo.pojo.CardBean>)]
+2020-10-12 19:42:00.222  INFO 19640 --- [main] com.talkweb.demo.DemoApplication         : Starting DemoApplication on LAPTOP-UG8096AO with PID 19640 (D:\IdeaProjects\demo\target\classes started by l in D:\IdeaProjects\demo)
+2020-10-12 19:42:00.250  INFO 19640 --- [main] com.talkweb.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2020-10-12 19:42:01.612  WARN 19640 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.talkweb.demo.sql]' package. Please check your configuration.
+2020-10-12 19:42:03.145  INFO 19640 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2020-10-12 19:42:03.172  INFO 19640 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-10-12 19:42:03.173  INFO 19640 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-10-12 19:42:03.450  INFO 19640 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-10-12 19:42:03.455  INFO 19640 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3021 ms
+2020-10-12 19:42:04.913  INFO 19640 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-12 19:42:05.389  INFO 19640 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2020-10-12 19:42:05.408  INFO 19640 --- [main] com.talkweb.demo.DemoApplication         : Started DemoApplication in 7.182 seconds (JVM running for 10.266)
+2020-10-12 19:42:17.095  INFO 19640 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-10-12 19:42:17.098  INFO 19640 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-10-12 19:42:17.131  INFO 19640 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 32 ms
+2020-10-12 19:42:18.099  INFO 19640 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-10-12 19:42:18.105  WARN 19640 --- [http-nio-8081-exec-1] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-10-12 19:42:20.679  INFO 19640 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-10-12 20:03:21.571  INFO 22712 --- [main] com.talkweb.demo.DemoApplicationTests    : Starting DemoApplicationTests on LAPTOP-UG8096AO with PID 22712 (started by l in D:\IdeaProjects\demo)
+2020-10-12 20:03:21.578  INFO 22712 --- [main] com.talkweb.demo.DemoApplicationTests    : No active profile set, falling back to default profiles: default
+2020-10-12 20:03:23.089  WARN 22712 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.talkweb.demo.sql]' package. Please check your configuration.
+2020-10-12 20:03:26.846  INFO 22712 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-12 20:03:27.718  INFO 22712 --- [main] com.talkweb.demo.DemoApplicationTests    : Started DemoApplicationTests in 7.28 seconds (JVM running for 10.74)
+2020-10-12 20:03:28.843  INFO 22712 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

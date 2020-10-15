@@ -85,5 +85,13 @@ public class CardController {
 	public ResultMap<AResultCode, CardBean> get(String card_id){
 		return cardService.get(card_id);
 	}
+
+	@ApiOperation(value="多修改接口")
+	@ApiImplicitParam(name = "card_id", value = "主键ID", required = true, paramType = "query")
+	@RequestMapping(name="多修改接口",value="commit.json",method = RequestMethod.GET)
+	@CrossOrigin
+	public ResultMap<AResultCode, CardBean> commit(@RequestParam("card_id") String card_id){
+		return cardService.commit(card_id);
+	}
 	
 }

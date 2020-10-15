@@ -57,4 +57,9 @@ public interface CardMapper {
 	 */
 	public CardBean get(String card_id);
 
+	/**
+	 * 多修改
+	 * @param ids
+	 */
+    public void commit(String[] ids);
 }

@@ -62,4 +62,5 @@ public interface CardService{
      */
     public ResultMap<AResultCode, CardBean> get(String card_id);
 
+    public ResultMap<AResultCode, CardBean> commit(String card_id);
 }
