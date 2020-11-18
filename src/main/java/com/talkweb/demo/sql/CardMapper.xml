@@ -126,4 +126,31 @@ x.status, x.comments
             #{item}
         </foreach>
     </delete>
+
+    <insert id="saveAll" parameterType="java.util.List">
+        insert into xb_card
+        (card_id, card_name, card_no, card_type, end_time, end_price,
+        pay_price, buyer_id, pay_time, send_time, waybill_number, settlement_ratio,
+        status, comments)
+        values
+        <foreach collection="list" item = "item" index = "index" separator=",">
+        (
+         #{item.card_id,jdbcType=VARCHAR},
+         #{item.card_name,jdbcType=VARCHAR},
+         #{item.card_no,jdbcType=VARCHAR},
+         #{item.card_type,jdbcType=VARCHAR},
+         #{item.end_time,jdbcType=TIMESTAMP},
+         #{item.end_price,jdbcType=DOUBLE},
+         #{item.pay_price,jdbcType=DOUBLE},
+         #{item.buyer_id,jdbcType=VARCHAR},
+         #{item.pay_time,jdbcType=TIMESTAMP},
+         #{item.send_time,jdbcType=TIMESTAMP},
+         #{item.waybill_number,jdbcType=VARCHAR},
+         #{item.settlement_ratio,jdbcType=DOUBLE},
+         #{item.status,jdbcType=VARCHAR},
+         #{item.comments,jdbcType=VARCHAR}
+        )
+        </foreach>
+    </insert>
+
 </mapper>

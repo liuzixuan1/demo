@@ -8,7 +8,7 @@ import java.util.List;
 /**
  *<p>Title:CardMapper.java</p>
  *<p>Description:hellworldDao</p>
- *@author zyh
+ *@author lzx
  *@version 1.0
  *@Automatically generate by Coder in 2020-09-15 21:51
  */
@@ -41,7 +41,7 @@ public interface CardMapper {
 	 * @param pb
 	 * @return
 	 */
-	public List<CardBean> pageList(PageBean<CardBean> pb);
+	public List<CardBean> pageList(PageBean pb);
 
 	/**
 	 *<b>Summary: 普通查询</b>
@@ -62,4 +62,11 @@ public interface CardMapper {
 	 * @param ids
 	 */
     public void commit(String[] ids);
+
+	/**
+	 * 批量导入
+	 * @param cardBeans
+	 * @return
+	 */
+	public void saveAll(List<CardBean> cardBeans);
 }

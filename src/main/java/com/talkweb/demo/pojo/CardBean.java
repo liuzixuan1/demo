@@ -1,6 +1,8 @@
 package com.talkweb.demo.pojo;
 
 import java.util.Date;
+
+import com.alibaba.excel.annotation.ExcelProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,26 +17,40 @@ import java.io.Serializable;
  */
 public class CardBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String card_id;		//卡片id
-    private String card_name;		//卡片名称
-    private String card_no;		//卡片编号
-    private String card_type;		//卡片类型；非评级卡、评级卡（含原封贴）、其他类型
+    @ExcelProperty("卡片id")
+    private String card_id;
+    @ExcelProperty("卡片名称")
+    private String card_name;
+    @ExcelProperty("卡片编号")
+    private String card_no;
+    @ExcelProperty("卡片类型")
+    private String card_type;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd",locale = "zh",timezone="GMT+8")
-    private Date end_time;		//截标日期
-    private double end_price;		//成交价
-    private double pay_price;		//实付款项
-    private String buyer_id;		//买家ID
+    @ExcelProperty("截标日期")
+    private Date end_time;
+    @ExcelProperty("成交价")
+    private double end_price;
+    @ExcelProperty("实付款项")
+    private double pay_price;
+    @ExcelProperty("买家ID")
+    private String buyer_id;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd",locale = "zh",timezone="GMT+8")
-    private Date pay_time;		//付款日期
+    @ExcelProperty("付款日期")
+    private Date pay_time;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd",locale = "zh",timezone="GMT+8")
-    private Date send_time;		//发货日期
-    private String waybill_number;		//运单号
-    private double settlement_ratio;		//结算比例
-    private String status;		//物品状态；1.待结算；2.已结算；3.顶回；4.未付款；5.取消或其他
-    private String comments;		//备注
+    @ExcelProperty("发货日期")
+    private Date send_time;
+    @ExcelProperty("运单号")
+    private String waybill_number;
+    @ExcelProperty("结算比例")
+    private double settlement_ratio;
+    @ExcelProperty("物品状态")
+    private String status;
+    @ExcelProperty("备注")
+    private String comments;
 
     /**
      *<b>Summary:设置卡片id</b>
@@ -274,4 +290,24 @@ public class CardBean implements Serializable {
         return comments;
     }
 
+
+    @Override
+    public String toString() {
+        return "CardBean{" +
+                "card_id='" + card_id + '\'' +
+                ", card_name='" + card_name + '\'' +
+                ", card_no='" + card_no + '\'' +
+                ", card_type='" + card_type + '\'' +
+                ", end_time=" + end_time +
+                ", end_price=" + end_price +
+                ", pay_price=" + pay_price +
+                ", buyer_id='" + buyer_id + '\'' +
+                ", pay_time=" + pay_time +
+                ", send_time=" + send_time +
+                ", waybill_number='" + waybill_number + '\'' +
+                ", settlement_ratio=" + settlement_ratio +
+                ", status='" + status + '\'' +
+                ", comments='" + comments + '\'' +
+                '}';
+    }
 }

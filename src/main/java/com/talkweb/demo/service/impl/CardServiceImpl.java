@@ -161,6 +161,8 @@ public class CardServiceImpl implements CardService{
         return result;
     }
 
+
+
     /**
      * 根据卡片类型，定时更改卡片状态为待结算
      * @param bean
@@ -184,5 +186,16 @@ public class CardServiceImpl implements CardService{
         }
     }
 
+    @Override
+    public void saveCardList(List<CardBean> cardBeans) {
+
+        for (int i = 0; i < cardBeans.size(); i++) {
+
+            cardBeans.get(i).setCard_id(StringUtil.getUUID());
+            System.out.println(cardBeans.get(i).toString());
+        }
+        cardMapper.saveAll(cardBeans);
+
+    }
 
 }

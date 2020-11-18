@@ -1,7 +1,9 @@
 package com.talkweb.demo.controller;
 
+import com.alibaba.excel.EasyExcel;
 import com.talkweb.demo.pojo.CardBean;
 import com.talkweb.demo.service.CardService;
+import com.talkweb.demo.util.ExcelListener;
 import com.talkweb.pangu.base.common.pojo.PageBean;
 import com.talkweb.pangu.base.common.result.AResultCode;
 import com.talkweb.pangu.base.common.result.ResultMap;
@@ -14,7 +16,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -93,5 +97,24 @@ public class CardController {
 	public ResultMap<AResultCode, CardBean> commit(@RequestParam("card_id") String card_id){
 		return cardService.commit(card_id);
 	}
-	
+
+	@ApiOperation(value="分页查询列表接口")
+	@CrossOrigin
+	@RequestMapping(name="分页查询列表接口",value="upload.json",method = RequestMethod.POST)
+	public ResultMap<AResultCode, String> uploadExcel(@ApiParam(value = "分页对象数据", required = true) @RequestParam() MultipartFile file)  {
+		ResultMap<AResultCode, String> result = new ResultMap<AResultCode, String>();
+		System.out.println("收到excel");
+		try {
+			EasyExcel.read(file.getInputStream(), CardBean.class, new ExcelListener(cardService)).sheet().doRead();
+		} catch (IOException e) {
+			result.setCode(AResultCode.FAIL);
+			result.setResult("failed");
+			return result;
+		}
+		result.setCode(AResultCode.OK);
+		result.setResult("success");
+		return result;
+	}
+
+
 }

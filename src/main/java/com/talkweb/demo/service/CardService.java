@@ -62,5 +62,12 @@ public interface CardService{
      */
     public ResultMap<AResultCode, CardBean> get(String card_id);
 
+    /**
+     *  修改多个卡片状态为  “已结算”
+     * @param card_id
+     * @return
+     */
     public ResultMap<AResultCode, CardBean> commit(String card_id);
+
+    public void saveCardList(List<CardBean> cardBeans);
 }

@@ -11,7 +11,7 @@ import com.talkweb.pangu.base.common.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * @author liuzixuan
@@ -19,6 +19,7 @@ import java.util.*;
  */
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired(required = false)
     private UserMapper userMapper;
 
@@ -36,11 +37,18 @@ public class UserServiceImpl implements UserService {
             if(StringUtil.isNull(bean.getUser_id())){
                 bean.setUser_id(StringUtil.getUUID());
             }
+            //判断是否有相同用户名
             if(userMapper.countUser(bean.getUsername()) != 0){
                 result.setCode(AResultCode.EXIST);
                 return result;
             }
-            userMapper.insertSelective(bean);
+            //捕获插入重复userId异常，返回id已存在
+            try {
+                userMapper.insertSelective(bean);
+            } catch (Exception e ) {
+                result.setCode(AResultCode.EXIST);
+                return result;
+            }
             result.setCode(AResultCode.OK);
             result.setResult(bean);
         }
